@@ -1,0 +1,1 @@
+Oto moje rozwiązania 2 z 3 zadań rekrutacyjnych do Gladiatorów Javascriptu.
