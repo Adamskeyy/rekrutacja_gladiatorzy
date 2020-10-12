@@ -3,6 +3,6 @@
 // (identyczne działanie jak to co ma this.setState)
 
 const useSetState = (initialState) => {
-
+    // pass
     // return [state, setPartialState]
 }

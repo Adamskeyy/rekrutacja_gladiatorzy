@@ -25,8 +25,7 @@ function mapFn(array, callback) {
 function filterFn(array, callback) {
     const filtered = [];
     for (let i = 0; i < array.length; i++) {
-        if (callback(array[i]))
-            filtered.push(array[i]);
+        if (callback(array[i])) filtered.push(array[i]);
     };
     return filtered;
 };
@@ -36,24 +35,24 @@ function reduceFn(array, callback, initial) {
     if (initial) {
         reduced = initial;
     } else {
-        reduced = 0;
+        reduced = null;
     };
     for (let i = 0; i < array.length; i++) {
-        reduced = callback(array[i], reduced);
+        reduced = callback(reduced, array[i]);
     };
     return reduced;
 };
 
 function reduceRightFn(array, callback, initial) {
     let reduced;
-    array.reverse();
+    let reversedArr = [...array].reverse();
     if (initial) {
         reduced = initial;
     } else {
-        reduced = 0;
+        reduced = null;
     };
-    for (let i = 0; i < array.length; i++) {
-        reduced = callback(array[i], reduced);
+    for (let i = 0; i < reversedArr.length; i++) {
+        reduced = callback(reduced, reversedArr[i]);
     };
     return reduced;
 };
@@ -62,9 +61,7 @@ function everyFn(array, callback) {
     for (let i = 0; i < array.length; i++) {
         if (!callback(array[i])) {
             return false;
-        } else {
-            continue;
-        }
+        };
     };
     return true;
 };
@@ -73,7 +70,7 @@ function someFn(array, callback) {
     for (let i = 0; i < array.length; i++) {
         if (callback(array[i])) {
             return true;
-        }
+        };
     };
     return false;
 };
@@ -89,8 +86,9 @@ function entriesFn(array) {
 console.log('testArray: ', testArray);
 console.log('mapFn output: ', mapFn(testArray, x => 2 * x));
 console.log('filterFn output: ', filterFn(testArray, x => 5 > x));
-console.log('reduceFn output: ', reduceFn(testArray, (a, b) => a + b));
-console.log('reduceRightFn output: ', reduceRightFn(testArray, (a, b) => a + b));
-console.log('everyFn output: ', everyFn(testArray, x => x === 4));
-console.log('someFn output: ', someFn(testArray, x => x === 4));
+console.log('reduceFn output: ', reduceFn(testArray, (a, b) => a - b, 10));
+console.log('reduceRightFn output: ', reduceRightFn(testArray, (a, b) => a - b));
+console.log('everyFn output: ', everyFn(testArray, x => x < 4000));
+console.log('someFn output: ', someFn(testArray, x => x === 6));
 console.log('entriesFn output: ', entriesFn(testArray));
+console.log(testArray);
