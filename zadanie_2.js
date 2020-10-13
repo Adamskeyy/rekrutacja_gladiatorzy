@@ -21,7 +21,7 @@ function _some(array, callback) {
 // Every
 function _every(array, callback) {
     return array.reduce((accumulator, element) => {
-        if (!callback(element)) {
+        if (!callback(element) || !callback(accumulator)) {
             return false;
         };
         return true;
@@ -46,7 +46,7 @@ function _map(array, callback) {
 };
 
 console.log('testArray: ', testArray);
-console.log('_some output: ', _some(testArray, a => a < 2));
-console.log('_every output: ', _every(testArray, a => a < 5));
+console.log('_some output: ', _some(testArray, a => a > 3));
+console.log('_every output: ', _every(testArray, a => a > 1));
 console.log('_filter output: ', _filter(testArray, a => a > 2));
 console.log('_map output: ', _map(testArray, a => a * 2));
