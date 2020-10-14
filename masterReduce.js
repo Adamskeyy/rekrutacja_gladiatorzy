@@ -46,7 +46,7 @@ function _map(array, callback) {
 };
 
 console.log('testArray: ', testArray);
-console.log('_some output: ', _some(testArray, a => a > 3));
-console.log('_every output: ', _every(testArray, a => a > 1));
-console.log('_filter output: ', _filter(testArray, a => a > 2));
+console.log('_some output: ', _some(testArray, a => a > 4));
+console.log('_every output: ', _every(testArray, a => a < 7));
+console.log('_filter output: ', _filter(testArray, a => a >= 2));
 console.log('_map output: ', _map(testArray, a => a * 2));
