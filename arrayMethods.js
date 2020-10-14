@@ -14,14 +14,6 @@
 
 const testArray = [5, 545, 4, 3];
 
-let reducedRight = [...testArray].reduceRight((a, b) => a - b);
-let reduced = [...testArray].reduce((a, b) => {
-    return a + b;
-});
-console.log('testArray: ', testArray);
-console.log(reduced);
-console.log(reducedRight);
-
 function mapFn(array, callback) {
     const mapped = [];
     for (let i = 0; i < array.length; i++) {
@@ -97,7 +89,7 @@ console.log('testArray: ', testArray);
 console.log('mapFn output: ', mapFn(testArray, x => 2 * x));
 console.log('filterFn output: ', filterFn(testArray, x => 5 > x));
 console.log('reduceFn output: ', reduceFn(testArray, (a, b) => a + b));
-console.log('reduceRightFn output: ', reduceRightFn(testArray, (a, b) => a - b));
+console.log('reduceRightFn output: ', reduceRightFn(testArray, (a, b) => a - b, 10));
 console.log('everyFn output: ', everyFn(testArray, x => x === 545));
 console.log('someFn output: ', someFn(testArray, x => x === 4));
 console.log('entriesFn output: ', entriesFn(testArray));
