@@ -91,4 +91,3 @@ console.log('reduceRightFn output: ', reduceRightFn(testArray, (a, b) => a - b))
 console.log('everyFn output: ', everyFn(testArray, x => x === 545));
 console.log('someFn output: ', someFn(testArray, x => x === 4));
 console.log('entriesFn output: ', entriesFn(testArray));
-console.log(testArray);
