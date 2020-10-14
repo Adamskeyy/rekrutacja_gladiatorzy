@@ -32,32 +32,36 @@ function filterFn(array, callback) {
 
 function reduceFn(array, callback, initial) {
     let reduced;
+    let i;
     if (initial) {
         reduced = initial;
-        for (let i = 0; i < array.length; i++) {
-            reduced = callback(reduced, array[i]);
-        };
+        i = 0;
     } else {
         reduced = array[0];
-        for (let i = 1; i < array.length; i++) {
-            reduced = callback(reduced, array[i]);
-        };
+        i = 1;
+    };
+    for (i; i < array.length; i++) {
+        reduced = callback(reduced, array[i]);
     };
     return reduced;
 };
 
 function reduceRightFn(array, callback, initial) {
     let reduced;
+    let i;
+    const reversedArray = [...array].reverse();
     if (initial) {
-      reduced = initial;
+        reduced = initial;
+        i = 0;
     } else {
-       reduced = array[array.length - 1];
+        reduced = reversedArray[0];
+        i = 1;
     };
-    for (let i = array.length - 2; i >= 0; i--) {
-      reduced = callback(reduced, array[i]);
+    for (i; i < reversedArray.length; i++) {
+        reduced = callback(reduced, reversedArray[i]);
     };
     return reduced;
-  };
+};
 
 function everyFn(array, callback) {
     for (let i = 0; i < array.length; i++) {
@@ -84,12 +88,3 @@ function entriesFn(array) {
     };
     return entries;
 };
-
-console.log('testArray: ', testArray);
-console.log('mapFn output: ', mapFn(testArray, x => 2 * x));
-console.log('filterFn output: ', filterFn(testArray, x => 5 > x));
-console.log('reduceFn output: ', reduceFn(testArray, (a, b) => a + b));
-console.log('reduceRightFn output: ', reduceRightFn(testArray, (a, b) => a - b, 10));
-console.log('everyFn output: ', everyFn(testArray, x => x === 545));
-console.log('someFn output: ', someFn(testArray, x => x === 4));
-console.log('entriesFn output: ', entriesFn(testArray));
