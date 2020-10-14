@@ -34,12 +34,16 @@ function reduceFn(array, callback, initial) {
     let reduced;
     if (initial) {
         reduced = initial;
+        for (let i = 0; i < array.length; i++) {
+            reduced = callback(reduced, array[i]);
+        };
     } else {
-        reduced = null;
+        reduced = array[0];
+        for (let i = 1; i < array.length; i++) {
+            reduced = callback(reduced, array[i]);
+        };
     };
-    for (let i = 0; i < array.length; i++) {
-        reduced = callback(reduced, array[i]);
-    };
+
     return reduced;
 };
 
@@ -48,12 +52,16 @@ function reduceRightFn(array, callback, initial) {
     let reversedArr = [...array].reverse();
     if (initial) {
         reduced = initial;
+        for (let i = 0; i < reversedArr.length; i++) {
+            reduced = callback(reduced, reversedArr[i]);
+        };
     } else {
-        reduced = null;
+        reduced = array[0];
+        for (let i = 1; i < reversedArr.length; i++) {
+            reduced = callback(reduced, reversedArr[i]);
+        };
     };
-    for (let i = 0; i < reversedArr.length; i++) {
-        reduced = callback(reduced, reversedArr[i]);
-    };
+
     return reduced;
 };
 
